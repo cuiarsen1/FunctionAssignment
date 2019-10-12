@@ -64,8 +64,10 @@ public class Parabola extends Quadratic implements Calculations, Drawable {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+
+		String s = "";
+		
+		return s;
 	}
 
 }
