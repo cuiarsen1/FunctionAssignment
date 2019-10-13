@@ -1,3 +1,4 @@
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Cubic extends Quadratic implements Calculations, Drawable {
@@ -11,7 +12,7 @@ public class Cubic extends Quadratic implements Calculations, Drawable {
 	}
 
 	@Override
-	public void draw(GraphicsContext gc, Function f) {
+	public void draw(Canvas c) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -39,15 +40,15 @@ public class Cubic extends Quadratic implements Calculations, Drawable {
 	@Override
 	public double getArea(double x_start, double x_end) {
 		
-		double deltaX = 0.1;
+		double deltaX = 0.001;
 		double currentX = x_start;
 		double area = 0;
 		
-		while (currentX <= x_end)
+		while (currentX < x_end)
 		{
 			area += val(currentX) * deltaX;
 			
-			currentX = (Math.round((currentX + deltaX) * 10))/10.0;
+			currentX += deltaX;
 		}
 		
 		return area;
@@ -56,7 +57,7 @@ public class Cubic extends Quadratic implements Calculations, Drawable {
 	@Override
 	public double getSlope(double x) {
 		
-		double deltaX = 0.1;
+		double deltaX = 0.001;
 		double slope = (val(x + deltaX) - val(x - deltaX))/(2*deltaX);
 		
 		return slope;

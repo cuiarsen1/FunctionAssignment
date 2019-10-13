@@ -1,3 +1,4 @@
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Logarithm extends Function implements Calculations, Drawable {
@@ -14,7 +15,7 @@ public class Logarithm extends Function implements Calculations, Drawable {
 	}
 
 	@Override
-	public void draw(GraphicsContext gc, Function f) {
+	public void draw(Canvas c) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -41,21 +42,22 @@ public class Logarithm extends Function implements Calculations, Drawable {
 	@Override
 	public double getArea(double x_start, double x_end) {
 		
-		double deltaX = 0.1;
+		double deltaX = 0.001;
 		double currentX = x_start;
 		double area = 0;
 		
-			while (currentX <= x_end)
+			while (currentX < x_end)
 			{
 				if (undefined(currentX) == false)
 				{
 					area += val(currentX) * deltaX;
 					
-					currentX = (Math.round((currentX + deltaX) * 10))/10.0;
+					currentX += deltaX;
 				
 				}else
-					currentX = (Math.round((currentX + deltaX) * 10))/10.0;
+					currentX += deltaX;
 			}
+	
 		
 		return area;
 	}
@@ -63,7 +65,7 @@ public class Logarithm extends Function implements Calculations, Drawable {
 	@Override
 	public double getSlope(double x) {
 		
-		double deltaX = 0.1;
+		double deltaX = 0.001;
 		double slope = (val(x + deltaX) - val(x - deltaX))/(2*deltaX);
 		
 		return slope;
@@ -71,8 +73,39 @@ public class Logarithm extends Function implements Calculations, Drawable {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String s = "";
+		
+		if (a == 1.0)
+			s += "ln(x";
+		else if (a == -1.0)
+			s += "-ln(x";
+		else if (a == 0)
+		{
+			s += b;
+			return s;
+		}
+		else 
+			s += a + "*ln(x";
+		
+		if (x1 > 0)
+			s += "-" + x1 + ")";
+		else if (x1 == 0) 
+			s += ")";
+		else if (x1 < 0)
+			s += "+" + -x1 + ")";
+		
+		if (a != 0)
+		{
+			if (b > 0)
+	        	s += "+" + b;
+	    	else if (b < 0)
+	        	s += "-" + -b;
+		}
+		
+		return s;
+		
+		
 	}
 
 }

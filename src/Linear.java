@@ -15,16 +15,19 @@ public class Linear extends Function implements Calculations, Drawable{
 		this.x1 = x1;	
 	}
 	
+	DO DRAW FUNCTIONS
 	@Override
 	public void draw(Canvas c) {
-/*		super.x1 = f.x1;
+		
+		
+	/*	super.x1 = f.x1;
 		super.x2 = f.x2;
 		
 		double y1 = a * (super.x1 - this.x1) + b;
 		double y2 = a * (super.x2 - this.x1) + b;
 		
-		gc.strokeLine(f.center + super.x1, f.center - y1, f.center + x2, f.center - y2);*/
-		
+		gc.strokeLine(f.center + super.x1, f.center - y1, f.center + x2, f.center - y2);
+		*/
 	}
 	
 	@Override
@@ -50,15 +53,15 @@ public class Linear extends Function implements Calculations, Drawable{
 	@Override
 	public double getArea(double x_start, double x_end) {
 		
-		double deltaX = 0.1;
+		double deltaX = 0.001;
 		double currentX = x_start;
 		double area = 0;
 		
-		while (currentX <= x_end)
+		while (currentX < x_end)
 		{
 			area += val(currentX) * deltaX;
 			
-			currentX = (Math.round((currentX + deltaX) * 10))/10.0;
+			currentX += deltaX;
 		}
 		
 		return area;
@@ -100,8 +103,6 @@ public class Linear extends Function implements Calculations, Drawable{
 	        	s += "+" + b;
 	    	else if (b < 0)
 	        	s += "-" + -b;
-	        else if (b == 0)
-	        	return s;
 		}
 		
 		return s;

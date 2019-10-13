@@ -23,18 +23,24 @@ public class FunctionTester extends Application {
 		primaryStage.setTitle("Drawing Functions Test");
 		Group root = new Group();
 		Canvas canvas = new Canvas(600, 600);
-		//Function f = new Function(-200, 200);
-		//f.setCenter(300);
 		
-		Linear l = new Linear(0, 0, 0);
-		Arc a = new Arc(2, 3, 4);
-		Quadratic q = new Quadratic(0, 0, -1, 2);
-		Cubic c = new Cubic(0, 0, 0, -1, 0);
+		Linear l = new Linear(1, 0, 0);
+		Arc a = new Arc(1, 0, 0);
+		Logarithm log = new Logarithm(1, 0, 0);
+		Quadratic q = new Quadratic(1, 0, 0, 0);
+		Cubic c = new Cubic(1, 0, 0, 0, 0);
+		Parabola p = new Parabola(1, 0, 0);
+		
+		l.setDomain(200, 400);
+		System.out.println(a.getArea(-1 , 1));
+		System.out.println(q.getSlope(0));
 		
 		System.out.println(l.toString());
 		System.out.println(a.toString());
+		System.out.println(log.toString());
 		System.out.println(q.toString());
 		System.out.println(c.toString());
+		System.out.println(p.toString());
 		
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		//System.out.println(l.getName());
