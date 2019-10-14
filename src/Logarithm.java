@@ -42,7 +42,6 @@ public class Logarithm extends Function implements Calculations, Drawable {
 	@Override
 	public double getArea(double x_start, double x_end) {
 		
-		double deltaX = 0.001;
 		double currentX = x_start;
 		double area = 0;
 		
@@ -51,11 +50,9 @@ public class Logarithm extends Function implements Calculations, Drawable {
 				if (undefined(currentX) == false)
 				{
 					area += val(currentX) * deltaX;
-					
-					currentX += deltaX;
+				}
 				
-				}else
-					currentX += deltaX;
+				currentX += deltaX;
 			}
 	
 		

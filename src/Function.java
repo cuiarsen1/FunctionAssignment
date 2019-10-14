@@ -8,17 +8,23 @@ import javafx.scene.paint.Color;
 
 public abstract class Function {
 	
+	// Variables representing the start and end domain of the function
 	protected double x1;
 	protected double x2;
+	
 	protected Color col;
 	protected String name;
-	protected double center;
+	protected double deltaX; // variable representing the amount to increment x by
+	protected double center; // variable representing the center of the GUI screen
 	
 	// Constructor method for the Function class.  The parameters represent the domain of the function.
 	public Function(double x1, double x2) 
 	{
 		this.x1 = x1;
 		this.x2 = x2;
+		
+		deltaX = 0.001;
+		center = 300;
 	}
 	
 	// Returns a String containing the actual function.  For example, if the function was an object of the Parabola class, 

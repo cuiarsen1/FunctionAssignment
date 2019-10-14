@@ -42,7 +42,6 @@ public class Arc extends Function implements Calculations, Drawable{
 	@Override
 	public double getArea(double x_start, double x_end) {
 		
-		double deltaX = 0.001;
 		double currentX = x_start;
 		double area = 0;
 		
@@ -51,11 +50,9 @@ public class Arc extends Function implements Calculations, Drawable{
 				if (undefined(currentX) == false)
 				{
 					area += val(currentX) * deltaX;
-					
-					currentX += deltaX;
+				}
 				
-				}else
-					currentX += deltaX;
+				currentX += deltaX;
 			}
 	
 		
@@ -86,16 +83,16 @@ public class Arc extends Function implements Calculations, Drawable{
 		if (xcenter == 0)
 			s += "(x)^2)";
 		else if (xcenter > 0)
-			s += "(x - " + xcenter + ")^2)";
+			s += "(x-" + xcenter + ")^2)";
 		else 
-			s += "(x + " + -xcenter + ")^2)";
+			s += "(x+" + -xcenter + ")^2)";
 		
 		if (ycenter == 0)
 			return s;
 		else if (ycenter > 0)
-			s += " + " + ycenter;
+			s += "+" + ycenter;
 		else
-			s += " - " + -ycenter;
+			s += "-" + -ycenter;
 		
 		return s;
 		
