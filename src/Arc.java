@@ -16,8 +16,50 @@ public class Arc extends Function implements Calculations, Drawable{
 
 	@Override
 	public void draw(Canvas c) {
-		// TODO Auto-generated method stub
 		
+		GraphicsContext gc = c.getGraphicsContext2D();
+
+		// Variables representing the center of the canvas
+		double centerX = c.getWidth()/2;
+		double centerY = c.getHeight()/2;
+
+		// Gets domain of the function
+		super.x1 = super.getStartDomain();
+		super.x2 = super.getEndDomain();
+
+		// Temporary variables representing the coordinates of the line segments of the function
+		double startX = 0;
+		double startY = 0;
+		double endX = 0;
+		double endY = 0;
+
+		double currentX = super.x1; // The current x value
+		double oldX = 0; // The previous x value
+
+		/*
+		 * Calculates all of the coordinates of the function and draws line segments
+		 * between each of them
+		 */
+		while (currentX < super.x2) 
+		{
+			oldX = currentX; // updates the previous x value
+
+			currentX += deltaX; // moves to next x value
+
+			// If the start or end y values are undefined, don't include them in the function
+			if (undefined(oldX) || undefined(currentX) == true)
+				continue;
+
+			// Draws the line segment of the function
+			
+			startX = oldX + centerX;
+			startY = centerY - val(oldX);
+			endX = currentX + centerX;
+			endY = centerY - val(currentX);
+
+			gc.strokeLine(startX, startY, endX, endY);
+
+		}
 	}
 
 	@Override
