@@ -23,59 +23,72 @@ public class FunctionTester extends Application {
 		primaryStage.setTitle("Drawing Functions Test");
 		Group root = new Group();
 		Canvas canvas = new Canvas(600, 600);
-		
+
 		Linear l = new Linear(1, 0, 0);
 		Arc a = new Arc(4, 0, -2);
 		Logarithm log = new Logarithm(1, 0, 0);
 		Quadratic q = new Quadratic(0.25, -0.5, -1, 0);
 		Cubic c = new Cubic(0.35, 0.25, -0.5, -1, 2);
 		Parabola p = new Parabola(1, 0, 0);
-		
-//		l.setDomain(-300, 300);
-//		l.draw(canvas);
-//		
-//		a.setDomain(0, 300);
-//		a.draw(canvas);
-//		
-//		log.setDomain(-300, 300);
-//		log.draw(canvas);
-//	
-//		q.setDomain(-300, 300);
-//		q.draw(canvas);
-//		
-//		c.setDomain(-300, 300);
-//		c.draw(canvas);
-//		
-//		p.setDomain(-300, 300);
-//		p.draw(canvas);
 
-		/*
-		 * System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));
-		 * 
-		 * System.out.println(l.toString()); System.out.println(a.toString());
-		 * System.out.println(log.toString()); System.out.println(q.toString());
-		 * System.out.println(c.toString()); System.out.println(p.toString());
-		 */
+		PRINT AREA AND SLOPE HERE
 		
-		//System.out.println(l.getName());
-		//drawShapes(gc);
+		l.setDomain(-300, 300);
+		l.setName("Linear");
+		l.setColour(Color.BLACK);
+		l.draw(canvas);
+
+		a.setDomain(-300, 300);
+		a.setName("Arc");
+		a.setColour(Color.BLUE);
+		a.draw(canvas);
+
+		log.setDomain(-300, 300);
+		log.setName("Logarithm");
+		log.setColour(Color.RED);
+		log.draw(canvas);
+
+		q.setDomain(-300, 300);
+		q.setName("Quadratic");
+		q.setColour(Color.YELLOW);
+		q.draw(canvas);
+
+		c.setDomain(-300, 300);
+		c.setName("Cubic");
+		c.setColour(Color.LIME);
+		c.draw(canvas);
+
+		p.setDomain(-300, 300);
+		p.setName("Parabola");
+		p.setColour(Color.PURPLE);
+		p.draw(canvas);
+
+		
+		  System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));
+		  
+		  System.out.println(l.toString()); System.out.println(a.toString());
+		  System.out.println(log.toString()); System.out.println(q.toString());
+		  System.out.println(c.toString()); System.out.println(p.toString());
+		  
+		 
+		// System.out.println(l.getName());
+		// drawShapes(gc);
 		root.getChildren().add(canvas);
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
 
 	}
 
-	// test method for drawing - you can use this as an example for drawing various types of lines
+	// test method for drawing - you can use this as an example for drawing various
+	// types of lines
 	private void drawShapes(GraphicsContext gc) {
 		gc.setFill(Color.GREEN);
 		gc.setStroke(Color.BLUE);
 		gc.setLineWidth(5);
 		gc.strokeLine(40, 10, 10, 40);
 
-		gc.strokePolygon(new double[]{60, 90, 60, 90},
-				new double[]{210, 210, 240, 240}, 4);
-		gc.strokePolyline(new double[]{110, 140, 110, 140},
-				new double[]{210, 210, 240, 240}, 4);
+		gc.strokePolygon(new double[] { 60, 90, 60, 90 }, new double[] { 210, 210, 240, 240 }, 4);
+		gc.strokePolyline(new double[] { 110, 140, 110, 140 }, new double[] { 210, 210, 240, 240 }, 4);
 	}
 
 }

@@ -24,8 +24,8 @@ public class Arc extends Function implements Calculations, Drawable{
 		double centerY = c.getHeight()/2;
 
 		// Gets domain of the function
-		super.x1 = super.getStartDomain();
-		super.x2 = super.getEndDomain();
+		super.x1 = getStartDomain();
+		super.x2 = getEndDomain();
 
 		// Temporary variables representing the coordinates of the line segments of the function
 		double startX = 0;
@@ -57,6 +57,7 @@ public class Arc extends Function implements Calculations, Drawable{
 			endX = currentX + centerX;
 			endY = centerY - val(currentX);
 
+			gc.setStroke(getColour());
 			gc.strokeLine(startX, startY, endX, endY);
 
 		}
