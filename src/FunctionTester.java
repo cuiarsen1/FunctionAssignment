@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +24,13 @@ public class FunctionTester extends Application {
 		primaryStage.setTitle("Drawing Functions Test");
 		Group root = new Group();
 		Canvas canvas = new Canvas(600, 600);
+		
+		Line axisX = new Line(0, canvas.getHeight()/2, canvas.getWidth(), canvas.getHeight()/2);
+		Line axisY = new Line(canvas.getWidth()/2, 0, canvas.getWidth()/2, canvas.getHeight());
+		axisX.setStrokeWidth(3);
+		axisY.setStrokeWidth(3);
+		
+		root.getChildren().addAll(axisX, axisY);
 
 		Linear l = new Linear(1, 0, 0);
 		Arc a = new Arc(4, 0, -2);
@@ -31,7 +39,7 @@ public class FunctionTester extends Application {
 		Cubic c = new Cubic(0.35, 0.25, -0.5, -1, 2);
 		Parabola p = new Parabola(1, 0, 0);
 
-		PRINT AREA AND SLOPE HERE
+		//PRINT AREA AND SLOPE HERE
 		
 		l.setDomain(-300, 300);
 		l.setName("Linear");
@@ -50,7 +58,7 @@ public class FunctionTester extends Application {
 
 		q.setDomain(-300, 300);
 		q.setName("Quadratic");
-		q.setColour(Color.YELLOW);
+		q.setColour(Color.BROWN);
 		q.draw(canvas);
 
 		c.setDomain(-300, 300);
@@ -64,15 +72,12 @@ public class FunctionTester extends Application {
 		p.draw(canvas);
 
 		
-		  System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));
-		  
-		  System.out.println(l.toString()); System.out.println(a.toString());
-		  System.out.println(log.toString()); System.out.println(q.toString());
-		  System.out.println(c.toString()); System.out.println(p.toString());
-		  
-		 
-		// System.out.println(l.getName());
-		// drawShapes(gc);
+	  System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));
+	  
+	  System.out.println(l.toString()); System.out.println(a.toString());
+	  System.out.println(log.toString()); System.out.println(q.toString());
+	  System.out.println(c.toString()); System.out.println(p.toString());
+		
 		root.getChildren().add(canvas);
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();

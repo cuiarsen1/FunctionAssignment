@@ -1,7 +1,7 @@
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Arc extends Function implements Calculations, Drawable{
+public class Arc extends Function {
 	
 	protected double r;
 	protected double xcenter;

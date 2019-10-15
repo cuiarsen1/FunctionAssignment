@@ -1,7 +1,7 @@
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Logarithm extends Function implements Calculations, Drawable {
+public class Logarithm extends Function {
 	
 	protected double a, b, x1;
 	

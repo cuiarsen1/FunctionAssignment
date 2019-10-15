@@ -1,7 +1,4 @@
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-
-public class Parabola extends Quadratic implements Calculations, Drawable {
+public class Parabola extends Quadratic {
 	
 	public Parabola(double a, double b, double x1) {
 		

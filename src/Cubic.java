@@ -1,7 +1,7 @@
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Cubic extends Function implements Calculations, Drawable {
+public class Cubic extends Function {
 
 	protected double a, b, c, d, x1;
 
@@ -28,7 +28,7 @@ public class Cubic extends Function implements Calculations, Drawable {
 		// Gets domain of the function
 		super.x1 = getStartDomain();
 		super.x2 = getEndDomain();
-
+		
 		// Temporary variables representing the coordinates of the line segments of the function
 		double startX = 0;
 		double startY = 0;
@@ -62,7 +62,6 @@ public class Cubic extends Function implements Calculations, Drawable {
 			gc.setStroke(getColour());
 			gc.strokeLine(startX, startY, endX, endY);
 			
-
 		}
 	}
 

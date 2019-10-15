@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
  *
  */
 
-public abstract class Function {
+public abstract class Function implements Calculations, Drawable {
 	
 	// Variables representing the start and end domain of the function
 	protected double x1;
