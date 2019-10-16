@@ -35,13 +35,13 @@ public class FunctionTester extends Application {
 		Linear l = new Linear(1, 0, 0);
 		Arc a = new Arc(4, 0, -2);
 		Logarithm log = new Logarithm(1, 0, 0);
-		Quadratic q = new Quadratic(0.25, -0.5, -1, 0);
+		Quadratic q = new Quadratic(1, 0, 0, 400);
 		Cubic c = new Cubic(0.35, 0.25, -0.5, -1, 2);
 		Parabola p = new Parabola(1, 0, 0);
 
 		//PRINT AREA AND SLOPE HERE
 		
-//		l.setDomain(-600, 600);
+//		l.setDomain(-200, 400);
 //		l.setName("Linear");
 //		l.setColour(Color.BLACK);
 //		l.draw(canvas);
@@ -56,7 +56,7 @@ public class FunctionTester extends Application {
 //		log.setColour(Color.RED);
 //		log.draw(canvas);
 //
-		q.setDomain(-300, 300);
+		q.setDomain(-100, 100);
 		q.setName("Quadratic");
 		q.setColour(Color.BROWN);
 		q.draw(canvas);
@@ -72,11 +72,11 @@ public class FunctionTester extends Application {
 //		p.draw(canvas);
 
 		
-	  System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));
+	 /* System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));
 	  
 	  System.out.println(l.toString()); System.out.println(a.toString());
 	  System.out.println(log.toString()); System.out.println(q.toString());
-	  System.out.println(c.toString()); System.out.println(p.toString());
+	  System.out.println(c.toString()); System.out.println(p.toString());*/
 		
 		root.getChildren().add(canvas);
 		primaryStage.setScene(new Scene(root));

@@ -30,11 +30,11 @@ public class Cubic extends Function {
 		super.x2 = getEndDomain();
 		
 		
-		FIGURE OUT WHY SCALE SQUISHES IT TOGETHER
-		double scaleX = 0;
-		double scaleY = 0;
+		double scaleX = 1;
+		double scaleY = 1;
 		
-		if (Math.abs(super.x2) > c.getWidth()/2 || Math.abs(super.x1) > c.getWidth()/2)
+		FIND OUT WHY WHEN DOMAIN IS SMALLER THAN THE CANVAS SIZE THE FUNCTION DOESNT DRAW
+		/*if (Math.abs(super.x2) > c.getWidth()/2 || Math.abs(super.x1) > c.getWidth()/2)
 		{
 			if (Math.abs(super.x1) >= Math.abs(super.x2))
 			{
@@ -45,6 +45,18 @@ public class Cubic extends Function {
 				scaleX = (c.getWidth()/2)/Math.abs(super.x2);
 			}
 		}
+		
+		double largestY = 0; // Variable used to track the largest absolute value of y
+		
+		// To scale y, find the largest absolute value of y, and see if it exceeds screen parameters. Then, do the same thing as scaleX
+		for (double x = super.x1; x < super.x2; x += deltaX)
+		{
+			if (Math.abs(val(x)) > c.getHeight()/2)
+				largestY = Math.abs(val(x));
+		}
+		if (largestY > c.getHeight()/2)
+			scaleY = (c.getHeight()/2)/largestY;
+		*/
 		
 		// Temporary variables representing the coordinates of the line segments of the function
 		double startX = 0;
@@ -72,9 +84,9 @@ public class Cubic extends Function {
 			// Draws the line segment of the function
 			
 			startX = oldX * scaleX + centerX;
-			startY = centerY - val(oldX);
+			startY = centerY - val(oldX) * scaleY;
 			endX = currentX * scaleX + centerX;
-			endY = centerY - val(currentX);
+			endY = centerY - val(currentX) * scaleY;
 
 			gc.setStroke(getColour());
 			gc.strokeLine(startX, startY, endX, endY);
