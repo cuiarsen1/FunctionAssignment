@@ -21,7 +21,7 @@ public class Cubic extends Function {
 
 		GraphicsContext gc = c.getGraphicsContext2D();
 
-		// Variables representing the center of the canvas
+		// Variables representing the center coordinates of the canvas
 		double centerX = c.getWidth()/2;
 		double centerY = c.getHeight()/2;
 
