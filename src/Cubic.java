@@ -18,16 +18,33 @@ public class Cubic extends Function {
 
 	@Override
 	public void draw(Canvas c) {
-
+		
 		GraphicsContext gc = c.getGraphicsContext2D();
-
+		
 		// Variables representing the center coordinates of the canvas
 		double centerX = c.getWidth()/2;
 		double centerY = c.getHeight()/2;
-
+		
 		// Gets domain of the function
 		super.x1 = getStartDomain();
 		super.x2 = getEndDomain();
+		
+		
+		FIGURE OUT WHY SCALE SQUISHES IT TOGETHER
+		double scaleX = 0;
+		double scaleY = 0;
+		
+		if (Math.abs(super.x2) > c.getWidth()/2 || Math.abs(super.x1) > c.getWidth()/2)
+		{
+			if (Math.abs(super.x1) >= Math.abs(super.x2))
+			{
+				scaleX = (c.getWidth()/2)/Math.abs(super.x1);
+			}
+			else if (Math.abs(super.x2) >= Math.abs(super.x1))
+			{
+				scaleX = (c.getWidth()/2)/Math.abs(super.x2);
+			}
+		}
 		
 		// Temporary variables representing the coordinates of the line segments of the function
 		double startX = 0;
@@ -47,16 +64,16 @@ public class Cubic extends Function {
 			oldX = currentX; // updates the previous x value
 
 			currentX += deltaX; // moves to next x value
-
+			
 			// If the start or end y values are undefined, don't include them in the function
 			if (undefined(oldX) || undefined(currentX) == true)
 				continue;
 
 			// Draws the line segment of the function
 			
-			startX = oldX + centerX;
+			startX = oldX * scaleX + centerX;
 			startY = centerY - val(oldX);
-			endX = currentX + centerX;
+			endX = currentX * scaleX + centerX;
 			endY = centerY - val(currentX);
 
 			gc.setStroke(getColour());

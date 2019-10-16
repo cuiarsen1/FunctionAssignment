@@ -41,35 +41,35 @@ public class FunctionTester extends Application {
 
 		//PRINT AREA AND SLOPE HERE
 		
-		l.setDomain(-300, 300);
-		l.setName("Linear");
-		l.setColour(Color.BLACK);
-		l.draw(canvas);
-
-		a.setDomain(-300, 300);
-		a.setName("Arc");
-		a.setColour(Color.BLUE);
-		a.draw(canvas);
-
-		log.setDomain(-300, 300);
-		log.setName("Logarithm");
-		log.setColour(Color.RED);
-		log.draw(canvas);
-
+//		l.setDomain(-600, 600);
+//		l.setName("Linear");
+//		l.setColour(Color.BLACK);
+//		l.draw(canvas);
+//
+//		a.setDomain(-300, 300);
+//		a.setName("Arc");
+//		a.setColour(Color.BLUE);
+//		a.draw(canvas);
+//
+//		log.setDomain(-300, 300);
+//		log.setName("Logarithm");
+//		log.setColour(Color.RED);
+//		log.draw(canvas);
+//
 		q.setDomain(-300, 300);
 		q.setName("Quadratic");
 		q.setColour(Color.BROWN);
 		q.draw(canvas);
-
-		c.setDomain(-300, 300);
-		c.setName("Cubic");
-		c.setColour(Color.LIME);
-		c.draw(canvas);
-
-		p.setDomain(-300, 300);
-		p.setName("Parabola");
-		p.setColour(Color.PURPLE);
-		p.draw(canvas);
+//
+//		c.setDomain(-300, 300);
+//		c.setName("Cubic");
+//		c.setColour(Color.LIME);
+//		c.draw(canvas);
+//
+//		p.setDomain(-300, 300);
+//		p.setName("Parabola");
+//		p.setColour(Color.PURPLE);
+//		p.draw(canvas);
 
 		
 	  System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));
