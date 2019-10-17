@@ -27,15 +27,15 @@ public class FunctionTester extends Application {
 		
 		Line axisX = new Line(0, canvas.getHeight()/2, canvas.getWidth(), canvas.getHeight()/2);
 		Line axisY = new Line(canvas.getWidth()/2, 0, canvas.getWidth()/2, canvas.getHeight());
-		axisX.setStrokeWidth(3);
-		axisY.setStrokeWidth(3);
+		axisX.setStrokeWidth(2);
+		axisY.setStrokeWidth(2);
 		
 		root.getChildren().addAll(axisX, axisY);
 
 		Linear l = new Linear(1, 0, 0);
 		Arc a = new Arc(4, 0, -2);
 		Logarithm log = new Logarithm(1, 0, 0);
-		Quadratic q = new Quadratic(1, 0, 0, 400);
+		Quadratic q = new Quadratic(1, 0, 0, 0);
 		Cubic c = new Cubic(0.35, 0.25, -0.5, -1, 2);
 		Parabola p = new Parabola(1, 0, 0);
 
@@ -56,20 +56,20 @@ public class FunctionTester extends Application {
 //		log.setColour(Color.RED);
 //		log.draw(canvas);
 //
-		q.setDomain(-100, 100);
-		q.setName("Quadratic");
-		q.setColour(Color.BROWN);
-		q.draw(canvas);
+//		q.setDomain(-300, 300);
+//		q.setName("Quadratic");
+//		q.setColour(Color.BROWN);
+//		q.draw(canvas);
 //
 //		c.setDomain(-300, 300);
 //		c.setName("Cubic");
 //		c.setColour(Color.LIME);
 //		c.draw(canvas);
 //
-//		p.setDomain(-300, 300);
-//		p.setName("Parabola");
-//		p.setColour(Color.PURPLE);
-//		p.draw(canvas);
+		p.setDomain(-300, 300);
+		p.setName("Parabola");
+		p.setColour(Color.PURPLE);
+		p.draw(canvas);
 
 		
 	 /* System.out.println(a.getArea(-1 , 1)); System.out.println(q.getSlope(0));

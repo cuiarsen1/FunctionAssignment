@@ -18,15 +18,43 @@ public class Logarithm extends Function {
 	public void draw(Canvas c) {
 		
 		GraphicsContext gc = c.getGraphicsContext2D();
-
-		// Variables representing the center of the canvas
+		
+		// Variables representing the center coordinates of the canvas
 		double centerX = c.getWidth()/2;
 		double centerY = c.getHeight()/2;
-
+		
 		// Gets domain of the function
 		super.x1 = getStartDomain();
 		super.x2 = getEndDomain();
-
+		
+		
+		double scaleX = 1;
+		double scaleY = 1;
+		
+		if (Math.abs(super.x2) > c.getWidth()/2 || Math.abs(super.x1) > c.getWidth()/2)
+		{
+			if (Math.abs(super.x1) >= Math.abs(super.x2))
+			{
+				scaleX = (c.getWidth()/2)/Math.abs(super.x1);
+			}
+			else if (Math.abs(super.x2) >= Math.abs(super.x1))
+			{
+				scaleX = (c.getWidth()/2)/Math.abs(super.x2);
+			}
+		}
+		
+		double largestY = 0; // Variable used to track the largest absolute value of y
+		
+		// To scale y, find the largest absolute value of y, and see if it exceeds screen parameters. Then, do the same thing as scaleX
+		for (double x = super.x1; x < super.x2; x += deltaX)
+		{
+			if (Math.abs(val(x)) > c.getHeight()/2)
+				largestY = Math.abs(val(x));
+		}
+		if (largestY > c.getHeight()/2)
+			scaleY = (c.getHeight()/2)/largestY;
+		
+		
 		// Temporary variables representing the coordinates of the line segments of the function
 		double startX = 0;
 		double startY = 0;
@@ -45,21 +73,21 @@ public class Logarithm extends Function {
 			oldX = currentX; // updates the previous x value
 
 			currentX += deltaX; // moves to next x value
-
+			
 			// If the start or end y values are undefined, don't include them in the function
 			if (undefined(oldX) || undefined(currentX) == true)
 				continue;
 
 			// Draws the line segment of the function
 			
-			startX = oldX + centerX;
-			startY = centerY - val(oldX);
-			endX = currentX + centerX;
-			endY = centerY - val(currentX);
+			startX = oldX * scaleX + centerX;
+			startY = centerY - val(oldX) * scaleY;
+			endX = currentX * scaleX + centerX;
+			endY = centerY - val(currentX) * scaleY;
 
 			gc.setStroke(getColour());
 			gc.strokeLine(startX, startY, endX, endY);
-
+			
 		}
 		
 	}

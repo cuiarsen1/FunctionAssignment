@@ -1,5 +1,7 @@
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 public class Cubic extends Function {
 
@@ -19,6 +21,8 @@ public class Cubic extends Function {
 	@Override
 	public void draw(Canvas c) {
 		
+		IS THE DOMAIN SUPPOSED TO BE THE EDGES OF THE SCREEN? Or is 0, 0 always supposed to be in the center of the screen no matter what?
+		
 		GraphicsContext gc = c.getGraphicsContext2D();
 		
 		// Variables representing the center coordinates of the canvas
@@ -29,12 +33,10 @@ public class Cubic extends Function {
 		super.x1 = getStartDomain();
 		super.x2 = getEndDomain();
 		
-		
 		double scaleX = 1;
 		double scaleY = 1;
 		
-		FIND OUT WHY WHEN DOMAIN IS SMALLER THAN THE CANVAS SIZE THE FUNCTION DOESNT DRAW
-		/*if (Math.abs(super.x2) > c.getWidth()/2 || Math.abs(super.x1) > c.getWidth()/2)
+		if (Math.abs(super.x2) > c.getWidth()/2 || Math.abs(super.x1) > c.getWidth()/2)
 		{
 			if (Math.abs(super.x1) >= Math.abs(super.x2))
 			{
@@ -56,7 +58,7 @@ public class Cubic extends Function {
 		}
 		if (largestY > c.getHeight()/2)
 			scaleY = (c.getHeight()/2)/largestY;
-		*/
+		
 		
 		// Temporary variables representing the coordinates of the line segments of the function
 		double startX = 0;
@@ -92,6 +94,13 @@ public class Cubic extends Function {
 			gc.strokeLine(startX, startY, endX, endY);
 			
 		}
+		
+		gc.setStroke(Color.BLACK);
+		gc.strokeLine(0, c.getHeight()/2, c.getWidth(), c.getHeight()/2);
+		gc.strokeLine(c.getWidth()/2, 0, c.getWidth()/2, c.getHeight());
+		
+		//gc.scale(x, y);
+		
 	}
 
 	@Override
