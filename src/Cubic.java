@@ -21,7 +21,7 @@ public class Cubic extends Function {
 	@Override
 	public void draw(Canvas c) {
 		
-		IS THE DOMAIN SUPPOSED TO BE THE EDGES OF THE SCREEN? Or is 0, 0 always supposed to be in the center of the screen no matter what?
+		//Domain represents edges of the screen. Scale until the function fits the entire screen. Same for range
 		
 		GraphicsContext gc = c.getGraphicsContext2D();
 		
@@ -32,6 +32,8 @@ public class Cubic extends Function {
 		// Gets domain of the function
 		super.x1 = getStartDomain();
 		super.x2 = getEndDomain();
+		
+		double domainSize = super.x1 - super.x2; // Size of the domain
 		
 		double scaleX = 1;
 		double scaleY = 1;
@@ -49,13 +51,21 @@ public class Cubic extends Function {
 		}
 		
 		double largestY = 0; // Variable used to track the largest absolute value of y
+		double smallestY = c.getHeight()/2; // Variable used to track the smallest absolute value of y
 		
 		// To scale y, find the largest absolute value of y, and see if it exceeds screen parameters. Then, do the same thing as scaleX
 		for (double x = super.x1; x < super.x2; x += deltaX)
 		{
 			if (Math.abs(val(x)) > c.getHeight()/2)
 				largestY = Math.abs(val(x));
+			
+			if (Math.abs(val(x)) < smallestY)
+				smallestY = Math.abs(val(x));
+			
 		}
+		
+		double rangeSize = largestY - smallestY;
+		
 		if (largestY > c.getHeight()/2)
 			scaleY = (c.getHeight()/2)/largestY;
 		
@@ -141,7 +151,6 @@ public class Cubic extends Function {
 	@Override
 	public double getSlope(double x) {
 
-		double deltaX = 0.001;
 		double slope = (val(x + deltaX) - val(x - deltaX)) / (2 * deltaX);
 
 		return slope;
