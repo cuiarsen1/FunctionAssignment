@@ -1,16 +1,14 @@
+// Arsen Cui
+// ICS4U1-01
+// October 20, 2019
+// Mr. Radulovic
+// ICS4U1 Functions Inheritance Assignment
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-
-/**
- * Example of using the Canvas and GraphicsContext class within JavaFX
- *
- */
 
 public class FunctionTester extends Application {
 

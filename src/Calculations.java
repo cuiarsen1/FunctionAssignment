@@ -1,8 +1,9 @@
-/**
- * 
- * Interface for functions
- *
- */
+// Arsen Cui
+// ICS4U1-01
+// October 20, 2019
+// Mr. Radulovic
+// ICS4U1 Functions Inheritance Assignment
+
 public interface Calculations 
 {
 	/**
