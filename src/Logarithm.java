@@ -18,44 +18,46 @@ public class Logarithm extends Function {
 	public void draw(Canvas c) {
 		
 		GraphicsContext gc = c.getGraphicsContext2D();
-		
+
 		// Variables representing the center coordinates of the canvas
-		double centerX = c.getWidth()/2;
-		double centerY = c.getHeight()/2;
-		
+		double centerX = c.getWidth() / 2;
+		double centerY = c.getHeight() / 2;
+
 		// Gets domain of the function
 		super.x1 = getStartDomain();
 		super.x2 = getEndDomain();
-		
-		
+
+		// Ratios to scale the x and y values by
 		double scaleX = 1;
 		double scaleY = 1;
+
+		double domainSize = Math.abs(super.x2 - super.x1); // Size of the domain
+		scaleX = c.getWidth() / domainSize;
+		double centerDomain = (super.x1 + super.x2) / 2; // Represents center coordinate of domain
 		
-		if (Math.abs(super.x2) > c.getWidth()/2 || Math.abs(super.x1) > c.getWidth()/2)
-		{
-			if (Math.abs(super.x1) >= Math.abs(super.x2))
-			{
-				scaleX = (c.getWidth()/2)/Math.abs(super.x1);
-			}
-			else if (Math.abs(super.x2) >= Math.abs(super.x1))
-			{
-				scaleX = (c.getWidth()/2)/Math.abs(super.x2);
-			}
+		double largestY = -Double.MAX_VALUE; // Variable used to track the largest value of y
+		double smallestY = Double.MAX_VALUE; // Variable used to track the smallest value of y
+
+		
+		for (double x = super.x1; x < super.x2; x = Math.round((x + deltaX) * 10)/10.0) {
+			
+			// If the function is undefined at this value, skip over it
+			if (undefined(x) == true || x == 0.0)
+				continue;
+			
+			if (val(x) > largestY)
+				largestY = val(x);
+
+			if (val(x) < smallestY)
+				smallestY = val(x);
 		}
 		
-		double largestY = 0; // Variable used to track the largest absolute value of y
-		
-		// To scale y, find the largest absolute value of y, and see if it exceeds screen parameters. Then, do the same thing as scaleX
-		for (double x = super.x1; x < super.x2; x += deltaX)
-		{
-			if (Math.abs(val(x)) > c.getHeight()/2)
-				largestY = Math.abs(val(x));
-		}
-		if (largestY > c.getHeight()/2)
-			scaleY = (c.getHeight()/2)/largestY;
-		
-		
-		// Temporary variables representing the coordinates of the line segments of the function
+		double rangeSize = Math.abs(largestY - smallestY); // Size of the range
+		scaleY = c.getHeight() / rangeSize;
+		double centerRange = (largestY + smallestY) / 2; // Represents center coordinate of range
+
+		// Temporary variables representing the coordinates of the line segments of the
+		// function
 		double startX = 0;
 		double startY = 0;
 		double endX = 0;
@@ -68,26 +70,27 @@ public class Logarithm extends Function {
 		 * Calculates all of the coordinates of the function and draws line segments
 		 * between each of them
 		 */
-		while (currentX < super.x2) 
-		{
+		while (currentX < super.x2) {
+			
 			oldX = currentX; // updates the previous x value
 
-			currentX += deltaX; // moves to next x value
-			
-			// If the start or end y values are undefined, don't include them in the function
+			currentX = Math.round((currentX + deltaX) * 10)/10.0; // moves to next x value
+
+			// If the start or end y values are undefined, don't include them in the
+			// function
 			if (undefined(oldX) || undefined(currentX) == true)
 				continue;
 
 			// Draws the line segment of the function
-			
-			startX = oldX * scaleX + centerX;
-			startY = centerY - val(oldX) * scaleY;
-			endX = currentX * scaleX + centerX;
-			endY = centerY - val(currentX) * scaleY;
 
+			startX = (oldX - centerDomain) * scaleX + centerX;
+			startY = centerY - (val(oldX) - centerRange) * scaleY;
+			endX = (currentX - centerDomain) * scaleX + centerX;
+			endY = centerY - (val(currentX) - centerRange) * scaleY;
+			
 			gc.setStroke(getColour());
 			gc.strokeLine(startX, startY, endX, endY);
-			
+
 		}
 		
 	}

@@ -21,9 +21,6 @@ public class Cubic extends Function {
 	@Override
 	public void draw(Canvas c) {
 
-		// Domain represents edges of the screen. Scale until the function fits the
-		// entire screen. Same for range
-
 		GraphicsContext gc = c.getGraphicsContext2D();
 
 		// Variables representing the center coordinates of the canvas
@@ -39,28 +36,27 @@ public class Cubic extends Function {
 		double scaleY = 1;
 
 		double domainSize = Math.abs(super.x2 - super.x1); // Size of the domain
-		double centerDomain = (super.x1 + super.x2) / 2; // Represents center of domain
 		scaleX = c.getWidth() / domainSize;
-		//double translateX = 
+		double centerDomain = (super.x1 + super.x2) / 2; // Represents center coordinate of domain
 		
-		double largestY = val(super.x1); // Variable used to track the largest absolute value of y
-		double smallestY = val(super.x1); // Variable used to track the smallest absolute value of y
+		double largestY = -Double.MAX_VALUE; // Variable used to track the largest value of y
+		double smallestY = Double.MAX_VALUE; // Variable used to track the smallest value of y
 
-		// To scale y, find the largest absolute value of y, and see if it exceeds
-		// screen parameters. Then, do the same thing as scaleX
-		for (double x = super.x1; x < super.x2; x += deltaX) {
+		for (double x = super.x1; x < super.x2; x = Math.round((x + deltaX) * 10)/10.0) {
+			
+			if (undefined(x) == true)
+				continue;
+			
 			if (val(x) > largestY)
 				largestY = val(x);
 
 			if (val(x) < smallestY)
 				smallestY = val(x);
 		}
-
+		
 		double rangeSize = Math.abs(largestY - smallestY); // Size of the range
-		double centerRange = (largestY + smallestY) / 2; // Represents center of range
 		scaleY = c.getHeight() / rangeSize;
-		
-		
+		double centerRange = (largestY + smallestY) / 2; // Represents center coordinate of range
 
 		// Temporary variables representing the coordinates of the line segments of the
 		// function
@@ -77,9 +73,10 @@ public class Cubic extends Function {
 		 * between each of them
 		 */
 		while (currentX < super.x2) {
+			
 			oldX = currentX; // updates the previous x value
 
-			currentX += deltaX; // moves to next x value
+			currentX = Math.round((currentX + deltaX) * 10)/10.0; // moves to next x value
 
 			// If the start or end y values are undefined, don't include them in the
 			// function
@@ -88,33 +85,15 @@ public class Cubic extends Function {
 
 			// Draws the line segment of the function
 
+			startX = (oldX - centerDomain) * scaleX + centerX;
+			startY = centerY - (val(oldX) - centerRange) * scaleY;
+			endX = (currentX - centerDomain) * scaleX + centerX;
+			endY = centerY - (val(currentX) - centerRange) * scaleY;
 			
-			/*startX = oldX * scaleX + centerX;
-			startY = centerY - val(oldX) * scaleY;
-			endX = currentX * scaleX + centerX;
-			endY = centerY - val(currentX) * scaleY;*/
-			 
-
-			/*startX = (oldX + centerDomain) * scaleX + centerX;
-			startY = (-val(oldX) + centerRange) * scaleY + centerY;
-			endX = (currentX + centerDomain) * scaleX + centerX;
-			endY = (-val(currentX) + centerRange) * scaleY + centerY;*/
-			
-			startX = (oldX - Math.abs(super.x1)) * scaleX;
-			startY = -(val(oldX)) * scaleY;
-			endX = (currentX - Math.abs(super.x1)) * scaleX;
-			endY = -(val(currentX)) * scaleY;
-
 			gc.setStroke(getColour());
 			gc.strokeLine(startX, startY, endX, endY);
 
 		}
-
-		gc.setStroke(Color.BLACK);
-		gc.strokeLine(0, c.getHeight() / 2, c.getWidth(), c.getHeight() / 2);
-		gc.strokeLine(c.getWidth() / 2, 0, c.getWidth() / 2, c.getHeight());
-
-		// gc.scale(x, y);
 
 	}
 
@@ -147,7 +126,7 @@ public class Cubic extends Function {
 		while (currentX < x_end) {
 			area += val(currentX) * deltaX;
 
-			currentX += deltaX;
+			currentX = Math.round((currentX + deltaX) * 10)/10.0; // moves to next x value
 		}
 
 		return area;
