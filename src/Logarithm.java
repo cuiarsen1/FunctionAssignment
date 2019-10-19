@@ -47,7 +47,7 @@ public class Logarithm extends Function implements Calculations, Drawable {
 			currentX += deltaX; // moves to next x value
 
 			// If the start or end y values are undefined, don't include them in the function
-			if (undefined(oldX) || undefined(currentX) == true)
+			if (undefined(val(oldX)) || undefined(val(currentX)) == true)
 				continue;
 
 			// Draws the line segment of the function

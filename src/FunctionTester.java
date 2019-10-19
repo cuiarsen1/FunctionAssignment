@@ -28,7 +28,7 @@ public class FunctionTester extends Application {
 		Arc a = new Arc(4, 0, -2);
 		Logarithm log = new Logarithm(1, 0, 0);
 		Quadratic q = new Quadratic(0.25, -0.5, -1, 0);
-		Cubic c = new Cubic(0.35, 0.25, -0.5, -1, 2);
+		Cubic c = new Cubic(1, 0, 0, 0, 0);
 		Parabola p = new Parabola(1, 0, 0);
 		
 //		l.setDomain(-300, 300);
@@ -43,8 +43,8 @@ public class FunctionTester extends Application {
 //		q.setDomain(-300, 300);
 //		q.draw(canvas);
 //		
-//		c.setDomain(-300, 300);
-//		c.draw(canvas);
+		c.setDomain(-300, 300);
+		c.draw(canvas);
 //		
 //		p.setDomain(-300, 300);
 //		p.draw(canvas);

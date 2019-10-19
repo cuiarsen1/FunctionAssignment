@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
  *
  */
 
-DO COLOUR AND NAME NEXT
+//DO COLOUR AND NAME NEXT
 public abstract class Function {
 	
 	// Variables representing the start and end domain of the function
