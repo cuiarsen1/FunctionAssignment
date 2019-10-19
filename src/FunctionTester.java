@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class FunctionTester extends Application {
@@ -30,10 +31,10 @@ public class FunctionTester extends Application {
 		Cubic c = new Cubic(0.35, 0.25, -0.5, -1, 2);
 		Parabola p = new Parabola(1, 0, 0);
 
-		//		l.setDomain(-200, 400);
-		//		l.setName("Linear");
-		//		l.setColour(Color.BLACK);
-		//		l.draw(canvas);
+				l.setDomain(-200, 400);
+				l.setName("Linear");
+				l.setColour(Color.BLACK);
+				l.draw(canvas);
 		//
 		//		a.setDomain(-10, 10);
 		//		a.setName("Arc");
